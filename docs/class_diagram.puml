@@ -1,0 +1,32 @@
+@startuml
+interface Transport
+interface RequestHandler
+class SocketTransport
+class TcpClient
+class HttpClient
+class Url
+class HttpParser
+class HttpSerializer
+class HttpRequest
+class HttpResponse
+class LocalHubHandler
+class Router
+class HttpServer
+class LocalHubApp
+
+Transport <|.. SocketTransport
+RequestHandler <|.. LocalHubHandler
+TcpClient --> SocketTransport
+HttpClient --> TcpClient
+HttpClient --> Url
+HttpClient --> HttpParser
+HttpClient --> HttpSerializer
+HttpParser --> HttpRequest
+HttpParser --> HttpResponse
+HttpSerializer --> HttpRequest
+HttpSerializer --> HttpResponse
+Router --> RequestHandler
+HttpServer --> Router
+LocalHubApp --> HttpClient
+LocalHubApp --> HttpServer
+@enduml
